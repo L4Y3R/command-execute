@@ -26,9 +26,9 @@ public class KafkaConsumerConfig {
         configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "command_execute_group");
         configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
-        configProps.put(JsonDeserializer.TRUSTED_PACKAGES, "com.demo.command.dto"); // Trust only com.demo.command.dto
+        configProps.put(JsonDeserializer.TRUSTED_PACKAGES, "com.demo.command.dto");
         return new DefaultKafkaConsumerFactory<>(configProps, new StringDeserializer(),
-                new JsonDeserializer<>(CommandDTO.class, false)); // Pass false to use TypeMapper
+                new JsonDeserializer<>(CommandDTO.class, false)); 
     }
 
     @Bean
