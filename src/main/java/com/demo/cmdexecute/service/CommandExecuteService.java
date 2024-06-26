@@ -14,9 +14,9 @@ public class CommandExecuteService {
 
     @KafkaListener(topics = "command_topic", groupId = "command_execute_group")
     public void consumer(ConsumerRecord<String, CommandDTO> record) {
-        logger.info("Kafka Message Received");
         CommandDTO message = record.value();
         long offset = record.offset();
+        logger.info("Kafka Message Received {}:Offset {}", message, offset);
         System.out.println("Received Message in group command_execute_group: " + message + " Offset [" + offset + "]");
     }
 }
